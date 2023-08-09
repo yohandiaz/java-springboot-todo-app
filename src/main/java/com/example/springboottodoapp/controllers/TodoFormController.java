@@ -19,7 +19,7 @@ public class TodoFormController {
     private TodoItemService todoItemService;
 
     @GetMapping("/create-todo")
-    public String showCreateForm() {
+    public String showCreateForm(TodoItem todoItem) {
         return "new-todo-item";
     }
 

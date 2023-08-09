@@ -29,10 +29,10 @@
                     <td th:text="${item.id}"></td>
                     <td th:text="${item.description}"></td>
                     <td>
-                        <span th:if="${item.isComplete} == true" th:text="Yes" />
-                        <span th:unless="${item.isComplete == true}" th:text="No" />
+                        <span th:if="${item.completed} == true" th:text="Yes" />
+                        <span th:unless="${item.completed == true}" th:text="No" />
                     </td>
-                    <td th:text="${item.completedAt}"></td>
+                    <td th:text="${item.createdAt}"></td>
                     <td th:text="${item.updatedAt}"></td>
                 </tr>
             </tbody>
