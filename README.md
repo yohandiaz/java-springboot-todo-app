@@ -1,7 +1,5 @@
 # Spring Boot To-Do List Application
 
-![Java]((https://img.shields.io/badge/Java-17-green.svg))
-
 Welcome to this Spring Boot To-Do List Application! This is a simple and efficient web-based to-do list application built using the Spring Boot framework. With this application, you can easily create, manage, and track your tasks and to-do items.
 
 ## Features
