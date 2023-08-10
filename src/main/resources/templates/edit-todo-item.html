@@ -27,16 +27,6 @@
                                placeholder="Description"
                         >
                     </div>
-                    <div class="col-6 form-check">
-                        <input class="form-check-input"
-                               type="checkbox"
-                               id="inputIsComplete"
-                               th:field="*{isComplete}"
-                               th:checked="${isComplete} == true">
-                        <label class="form-check-label" for="inputIsComplete">
-                            Completed?
-                        </label>
-                    </div>
 
                     <input type="hidden" th:field="*{createdAt}" />
                     <input type="hidden" th:field="*{updatedAt}" />

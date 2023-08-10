@@ -33,15 +33,17 @@
                                 <i class="bi bi-trash-fill"></i> Delete</a>
                         </div>
                     </td>
-                    <td>&nbsp;</td>
                     <td th:text="${item.id}"></td>
                     <td th:text="${item.description}"></td>
                     <td>
-                        <span th:if="${item.completed} == true" th:text="Yes" />
-                        <span th:unless="${item.completed == true}" th:text="No" />
+                        <input class="form-check-input"
+                            type="checkbox"
+                            id="inputIsComplete"
+                            th:checked="${item.completed}"
+                            th:onclick="'window.location.href=\'/toggle-completion/' + ${item.id} + '\';'">
                     </td>
-                    <td th:text="${item.createdAt}"></td>
-                    <td th:text="${item.updatedAt}"></td>
+                    <td th:text="${#temporals.format(item.createdAt, 'dd MMM yyyy HH:mm')}"></td>
+                    <td th:text="${#temporals.format(item.updatedAt, 'dd MMM yyyy HH:mm')}"></td>
                 </tr>
             </tbody>
         </table>

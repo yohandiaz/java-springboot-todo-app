@@ -1,6 +1,6 @@
 package com.example.springboottodoapp.services;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +29,11 @@ public class TodoItemService {
     public TodoItem save(TodoItem todoItem) {
         // If the todo item doesn't have an ID, set its creation time
         if (todoItem.getId() == null) {
-            todoItem.setCreatedAt(Instant.now());
+            todoItem.setCreatedAt(LocalDateTime.now());
         }
 
         // Set the update time to the current time
-        todoItem.setUpdatedAt(Instant.now());
+        todoItem.setUpdatedAt(LocalDateTime.now());
 
         // Save the todo item in the repository and return the saved instance
         return todoItemRepository.save(todoItem);
