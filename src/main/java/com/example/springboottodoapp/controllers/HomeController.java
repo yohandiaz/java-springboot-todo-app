@@ -24,12 +24,13 @@ public class HomeController {
 
     @GetMapping("/toggle-completion/{id}")
     public String toggleCompletion(@PathVariable("id") Long id) {
-        TodoItem todoItem = todoItemService.getById(id)
-            .orElseThrow(() -> new IllegalArgumentException("TodoItem id:" + id + " not found"));
+        TodoItem todoItem = todoItemService
+                .getById(id)
+                .orElseThrow(() -> new IllegalArgumentException("TodoItem id:" + id + " not found"));
 
         todoItem.setCompleted(!todoItem.isCompleted());
         todoItemService.save(todoItem);
 
         return "redirect:/"; // Redirect back to the home page
-}
+    }
 }

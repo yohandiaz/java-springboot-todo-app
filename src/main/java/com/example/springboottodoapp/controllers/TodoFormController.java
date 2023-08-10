@@ -33,47 +33,48 @@ public class TodoFormController {
 
         // Save the new TodoItem using the service
         todoItemService.save(todoItem);
-        
+
         // Redirect back to the home page
         return "redirect:/";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteTodoItem(@PathVariable("id") Long id, Model model){
+    public String deleteTodoItem(@PathVariable("id") Long id, Model model) {
         // Retrieve the TodoItem by id and delete it using the service
         TodoItem todoItem = todoItemService
-                    .getById(id)
-                    .orElseThrow(() -> new IllegalArgumentException("TodoItem id:" + id + " not found"));
-        
+                .getById(id)
+                .orElseThrow(() -> new IllegalArgumentException("TodoItem id:" + id + " not found"));
+
         todoItemService.delete(todoItem);
-        
+
         // Redirect back to the home page
         return "redirect:/";
     }
 
     @GetMapping("/edit/{id}")
-    public String showUpdateForm(@PathVariable("id") Long id, Model model){
+    public String showUpdateForm(@PathVariable("id") Long id, Model model) {
         // Retrieve the TodoItem by id and pass it to the edit form
         TodoItem todoItem = todoItemService
-                    .getById(id)
-                    .orElseThrow(() -> new IllegalArgumentException("TodoItem id:" + id + " not found"));
+                .getById(id)
+                .orElseThrow(() -> new IllegalArgumentException("TodoItem id:" + id + " not found"));
 
         model.addAttribute("todo", todoItem);
-        
+
         // Redirect to the edit form page
         return "edit-todo-item";
     }
 
     @PostMapping("/todo/{id}")
-    public String updateTodoItemString(@PathVariable("id") Long id, @Valid TodoItem todoItem, BindingResult result, Model model){
-        // Retrieve the TodoItem by id, update its properties, and save using the service
+    public String updateTodoItemString(@PathVariable("id") Long id, @Valid TodoItem todoItem, BindingResult result,
+            Model model) {
+        // Retrieve the TodoItem by id, update its properties, and save using the
+        // service
         TodoItem item = todoItemService
-                    .getById(id)
-                    .orElseThrow(() -> new IllegalArgumentException("TodoItem id:" + id + " not found"));
+                .getById(id)
+                .orElseThrow(() -> new IllegalArgumentException("TodoItem id:" + id + " not found"));
 
-        item.setCompleted(todoItem.isCompleted());
         item.setDescription(todoItem.getDescription());
-        
+
         todoItemService.save(item);
 
         // Redirect back to the home page
